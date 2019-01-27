@@ -55,7 +55,7 @@ const webpackConfig_fn = (env = {}) => {
         },
         {
           test: /\.jpe?g$|\.ico$|\.gif$|\.png$|\.svg$/,
-          loader: 'file-loader?name=./imgs/[name].[hash].[ext]',
+          loader: 'file-loader?&name=./imgs/[name].[hash].[ext]',
           exclude: absPathToFont
         },
         {
@@ -90,7 +90,6 @@ const webpackConfig_fn = (env = {}) => {
     ])
   };
 
-  console.log(JSON.stringify(configOut, null, 2))
   return configOut;
 };
 

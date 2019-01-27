@@ -1,7 +1,10 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 
-import './main.css';
-const appContainer = document.getElementById('app');
-ReactDom.render(<div>Hello React</div>, appContainer)
+import fonts from 'common/fonts/index.js';
+import './main.less';
+import App from './app';
+
+const appContainer = document.getElementById('app-container');
+ReactDom.render( <App/>,  appContainer)
 
