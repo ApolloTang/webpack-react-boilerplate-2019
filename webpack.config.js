@@ -58,12 +58,12 @@ const webpackConfig_fn = (env = {}) => {
         },
         {
           test: /\.jpe?g$|\.ico$|\.gif$|\.png$|\.svg$/,
-          loader: 'file-loader?&name=./imgs/[name].[hash].[ext]',
+          loader: 'file-loader?name=./imgs/[name].[hash].[ext]',
           exclude: absPathToFont
         },
         {
           test: /\.(woff|woff2|ttf|eot|svg|otf)(\?v=[a-z0-9]\.[a-z0-9]\.[a-z0-9])?$/,
-          loader: 'file-loader?&name=fonts/[name].[ext]'
+          loader: 'file-loader?name=fonts/[name].[ext]'
         },
         ifProduction(
           {
@@ -82,9 +82,7 @@ const webpackConfig_fn = (env = {}) => {
             test: /\.module\.(css|less)$/,
             use: [
               MiniCssExtractPlugin.loader,
-              { loader: 'css-loader',
-                options: {modules: true, camelCase: true}
-              },
+              'css-loader?modules=true&camelCase=true',
               'less-loader'
             ],
             exclude: /node_modules/
