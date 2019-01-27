@@ -69,11 +69,29 @@ const webpackConfig_fn = (env = {}) => {
           {
             test: /\.(css|less)$/,
             use: [MiniCssExtractPlugin.loader, 'css-loader', 'less-loader'],
-            exclude: /node_modules/
+            exclude: [/node_modules/, /\.module\.(css|less)$/]
           },
           {
             test: /\.(css|less)$/,
             loader: 'style-loader!css-loader!less-loader',
+            exclude: [/node_modules/, /\.module\.(css|less)$/]
+          }
+        ),
+        ifProduction(
+          {
+            test: /\.module\.(css|less)$/,
+            use: [
+              MiniCssExtractPlugin.loader,
+              { loader: 'css-loader',
+                options: {modules: true, camelCase: true}
+              },
+              'less-loader'
+            ],
+            exclude: /node_modules/
+          },
+          {
+            test: /\.module\.(css|less)$/,
+            loader: 'style-loader!css-loader?modules=true&camelCase=true!less-loader',
             exclude: /node_modules/
           }
         )
