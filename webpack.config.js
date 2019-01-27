@@ -79,7 +79,8 @@ const webpackConfig_fn = (env = {}) => {
     plugins: removeEmpty([
       new HtmlWebpackPlugin({
         template: 'index.html',
-        title: title
+        title: title,
+        favicon: './common/images/favicon.ico'
       }),
       ifProduction(
         new MiniCssExtractPlugin({
