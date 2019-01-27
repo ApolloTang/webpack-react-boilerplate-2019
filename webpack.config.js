@@ -32,7 +32,10 @@ const webpackConfig_fn = (env = {}) => {
     devtool: 'source-map',
     context: absPathToSrc,
     entry: {
-        main: './main.js'
+      main: [
+        '@babel/polyfill',
+        './main.js'
+      ]
     },
     output: ifProduction(
       {
