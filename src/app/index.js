@@ -1,12 +1,13 @@
 import React from 'react';
 import img from './react.png';
+import s from './style.module.less';
+
 import FontTest from 'font-test/';
-import './style.less';
 
 const App = () => (
-  <div className="app">
+  <div className={`${s.app}`}>
     <h1>Hello React</h1>
-    <div><img src={img} /></div>
+    <div className={`${s.imageContainer}`}><img src={img} /></div>
     <FontTest />
   </div>
 );
