@@ -33,7 +33,7 @@ const webpackConfig_fn = (env = {}) => {
     context: absPathToSrc,
     entry: {
       main: [
-        '@babel/polyfill',
+
         './main.js'
       ]
     },
@@ -82,14 +82,14 @@ const webpackConfig_fn = (env = {}) => {
             test: /\.module\.(css|less)$/,
             use: [
               MiniCssExtractPlugin.loader,
-              'css-loader?modules=true&camelCase=true',
+              'css-loader?modules=true&localsConvention=camelCase',
               'less-loader'
             ],
             exclude: /node_modules/
           },
           {
             test: /\.module\.(css|less)$/,
-            loader: 'style-loader!css-loader?modules=true&camelCase=true!less-loader',
+            loader: 'style-loader!css-loader?modules=true&localsConvention=camelCase!less-loader',
             exclude: /node_modules/
           }
         )

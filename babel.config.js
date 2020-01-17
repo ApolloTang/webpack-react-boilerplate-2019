@@ -1,21 +1,31 @@
-const presets = [
-  [
-    '@babel/env',
-    {
-      targets: { IE: '11'},
-      useBuiltIns: 'entry',
-      modules: false
-    },
-  ],
-  '@babel/preset-react'
-];
 
-const plugins = [
-  "@babel/plugin-proposal-class-properties",
-  "@babel/plugin-syntax-dynamic-import"
-]
 
-module.exports = {
-  presets,
-  plugins
-};
+module.exports = (api) => {
+  api.cache(true)
+  const presets = [
+    [
+      '@babel/preset-env',
+      {
+        'debug': false,
+        'targets': {'ie':'11'},
+        'useBuiltIns': 'usage',
+        // 'corejs': 3,  // dynamic import is broken:
+                         // https://github.com/babel/babel/issues/9872
+                         // so we will use corejs@2 instead
+        'corejs': 2,
+        'modules': false
+      }
+    ],
+    '@babel/preset-react',
+  ]
+
+  const plugins = [
+    '@babel/proposal-class-properties',
+    '@babel/plugin-syntax-dynamic-import'
+  ].filter(Boolean)
+
+  return {
+    presets,
+    plugins
+  }
+}
